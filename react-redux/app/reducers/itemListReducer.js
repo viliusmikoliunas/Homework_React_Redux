@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_NEW_ITEM':
-            const newObj = {
+            const newListItem = {
                 id: 'tdi-' + Math.random().toString(36).substring(2, 15),
                 title: action.text
             }
@@ -15,10 +15,14 @@ export default (state = initialState, action) => {
                 ...state,
                 itemListTD: [
                     ...state.itemListTD,
-                    newObj
+                    newListItem
                 ]
             }
         case 'DELETE_ITEM':
+            return {
+                ...state,
+                itemListTD: state.itemListTD.filter(item => item.id !== action.itemId)
+            }
         default:
             return state;
     }

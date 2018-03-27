@@ -35,6 +35,7 @@ class TodoItemList extends React.Component {
   deleteItem(itemId){
     let newList = this.state.todoItemList.filter(item => item.id !== itemId);
     this.setState({todoItemList: newList});
+    this.props.dispatchDeleteItem(itemId);
   }
 
   inputChanged(e){
@@ -74,7 +75,8 @@ export default connect(
     itemListReducer: state.itemListReducer
   }),
   (dispatch) => bindActionCreators({
-    dispatchAddNewItem: actions.addNewToDoItem
+    dispatchAddNewItem: actions.addNewToDoItem,
+    dispatchDeleteItem: actions.deleteToDoItem
   }
   ,dispatch)
 )(TodoItemList)

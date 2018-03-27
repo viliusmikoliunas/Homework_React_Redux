@@ -12,3 +12,10 @@ export const addNewToDoItem = (text) => {
         text
     }
 }
+
+export const deleteToDoItem = (itemId) => {
+    return {
+        type: 'DELETE_ITEM',
+        itemId
+    }
+}
