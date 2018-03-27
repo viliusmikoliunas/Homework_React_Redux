@@ -3,7 +3,8 @@ import { routerReducer } from 'react-router-redux';
 
 import todoItems from './todoItems';
 import settings from './settings';
+import itemListReducer from './itemListReducer'
 
-const rootReducer = combineReducers({todoItems, settings, routing: routerReducer});
+const rootReducer = combineReducers({itemListReducer, todoItems, settings, routing: routerReducer});
 
 export default rootReducer;

@@ -1,24 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 import TodoItem from './TodoItem';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './actions';
 
-export default class TodoItemList extends React.Component {
+class TodoItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       inputValue: '',
-      todoItemList: [
-        {
-          id: '1',
-          title: 'item 1'
-        },
-        {
-          id: '2',
-          title: 'item 2'
-        }
-      ]
-
-    };
+      todoItemList: this.props.itemListReducer.itemListTD
+    }
   }
 
   addTodoItem (e){
@@ -36,6 +29,7 @@ export default class TodoItemList extends React.Component {
       ],
       inputValue: ''
     });
+    this.props.dispatchAddNewItem(title);
   }
 
   deleteItem(itemId){
@@ -75,3 +69,12 @@ export default class TodoItemList extends React.Component {
         </div>
   }
 }
+export default connect(
+  (state) => ({
+    itemListReducer: state.itemListReducer
+  }),
+  (dispatch) => bindActionCreators({
+    dispatchAddNewItem: actions.addNewToDoItem
+  }
+  ,dispatch)
+)(TodoItemList)

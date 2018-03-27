@@ -4,17 +4,12 @@ import { browserHistory } from 'react-router';
 
 import rootReducer from '../reducers';
 
-import todoItems from '../data/todoItems';
-
-const defaultState = {
-    todoItems
-};
 
 const enhancers = compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-const store = createStore(rootReducer, defaultState, enhancers);
+const store = createStore(rootReducer, enhancers);
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

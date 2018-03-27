@@ -5,3 +5,10 @@ export const changeColor = (colorHexCode) => {
         colorHexCode
     }
 };
+
+export const addNewToDoItem = (text) => {
+    return {
+        type: 'ADD_NEW_ITEM',
+        text
+    }
+}

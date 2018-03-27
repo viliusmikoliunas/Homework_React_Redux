@@ -10,7 +10,6 @@ class TodoSettings extends React.Component {
         this.state = {
             appColor: this.props.appSettings.backgroundColor
         };
-
         this.onChangeColor = this.onChangeColor.bind(this);
     }
 
